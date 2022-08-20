@@ -15,28 +15,27 @@ class Result {
     public static List<Integer> calculation(int maxDigit) {
         List<Integer> sequencia = new ArrayList<>();
 
-
         for (int i = 1000; i < 10000; i++) {
             String string = String.valueOf(i);
-            String nova_string = "";
-            int soma_dos_digitos = 0;
+            StringBuilder novaString = new StringBuilder();
+            int somaDosDigitos = 0;
 
             for (Character numero : string.toCharArray()) { //Copia os caracteres nesta instância para uma matriz de caracteres Unicode.
 
                 int digito = Integer.parseInt(numero.toString()); //O método toString() retorna a representação String.
 
                 if (digito > maxDigit) {
-                    nova_string += maxDigit;
-                    soma_dos_digitos += maxDigit;
+                    novaString.append(maxDigit);
+                    somaDosDigitos += maxDigit;
                 } else {
-                    nova_string += digito;
-                    soma_dos_digitos += digito;
+                    novaString.append(digito);
+                    somaDosDigitos += digito;
                 }
             }
 
-            int num = Integer.parseInt(nova_string);
+            int num = Integer.parseInt(novaString.toString());
 
-            if (soma_dos_digitos == 21 && !(sequencia.contains(num))) {
+            if (somaDosDigitos == 21 && !(sequencia.contains(num))) {
                 sequencia.add(num);
             }
         }
